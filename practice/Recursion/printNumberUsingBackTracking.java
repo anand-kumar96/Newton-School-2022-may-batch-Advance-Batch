@@ -44,7 +44,7 @@ main call--> print(3)
                                                          if(n<1){
                                                            return; ---> condition true return
                                                              }
-                                                         print(n-1); ------------------------------>
+                                                         print(n-1); 
                                                       System.out.print(n+" ");
                                                            }
 
