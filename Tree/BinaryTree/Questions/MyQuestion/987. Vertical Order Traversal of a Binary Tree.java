@@ -14,7 +14,7 @@
  * }
  */
 
-// method 01 -->Using 
+// method 01 -->Using ArrayList
 
 class Solution {
     TreeMap<Integer,TreeMap<Integer,ArrayList<Integer>>>nodeMap;
@@ -50,5 +50,47 @@ class Solution {
         getverticalTraversal(root,0,0);
         beautifyResult();
         return result;
+    }
+}
+
+// using priority Queue
+
+class Solution {
+    TreeMap<Integer,TreeMap<Integer,PriorityQueue<Integer>>>nodeMap;
+    List<List<Integer>>result;
+    public void beautifyResult(){
+        for(TreeMap<Integer,PriorityQueue<Integer>>eachNodeMap:nodeMap.values()){
+            List<Integer>columnList=new ArrayList<>();
+            for(PriorityQueue<Integer>eachNodeList:eachNodeMap.values()){
+                while(!eachNodeList.isEmpty()){
+                    Integer value=eachNodeList.poll();
+                    columnList.add(value);
+                }
+            }
+            result.add(columnList);
+        }
+    }
+    public void getVerticalTraversal(TreeNode currentNode,int row,int column){
+        if(currentNode!=null){
+            if(!nodeMap.containsKey(column)){
+                nodeMap.put(column,new TreeMap<>());
+            }
+             if(!nodeMap.get(column).containsKey(row)){
+                 nodeMap.get(column).put(row,new PriorityQueue<>());
+        }
+            nodeMap.get(column).get(row).add(currentNode.val);
+            
+            getVerticalTraversal(currentNode.left,row+1,column-1);
+            getVerticalTraversal(currentNode.right,row+1,column+1);
+        }
+    
+    }
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        nodeMap=new TreeMap<>();
+        result=new ArrayList<>();
+        getVerticalTraversal(root,0,0);
+        beautifyResult();
+        return result;
+        
     }
 }
