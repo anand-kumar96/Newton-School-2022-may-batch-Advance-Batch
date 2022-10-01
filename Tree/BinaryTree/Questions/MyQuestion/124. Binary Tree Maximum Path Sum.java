@@ -49,7 +49,7 @@ class Solution {
         
     }
     public int maxPathSum(TreeNode root) {
-        int maxi[]=new int[1];
+        int maxi[]=new int[1]; // we can not handle with integer so use any data structure
         maxi[0]=Integer.MIN_VALUE;
         int ans=findMaxPath(root,maxi);
         return maxi[0];
