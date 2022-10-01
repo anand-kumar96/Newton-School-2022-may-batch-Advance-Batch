@@ -39,7 +39,7 @@ class Solution {
             // int rightSum=findMaxPath(root.right,maxi);
         
         
-          // to ignore -ve of left an d right part we have to right 
+          // to ignore -ve of left an d right part we have to right  // discard -ve value
          int leftSum=Math.max(0,findMaxPath(root.left,maxi));
         int rightSum=Math.max(0,findMaxPath(root.right,maxi));
         
