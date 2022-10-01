@@ -1,3 +1,5 @@
+
+// method 01
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
@@ -72,6 +74,58 @@ class Main {
     }
 }
 
+
+// method 02
+
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+
+ class Main {
+    int leftChild[];
+    int rightChild[];
+    int data[];
+
+    private void performQuery1(int u, int x) {
+        if(u == -1) {
+            return;
+        }
+
+        data[u] = data[u] + x;
+        performQuery1(leftChild[u], x);
+        performQuery1(rightChild[u], x);
+    }
+
+    public static void main(String[] args) {
+        Main main = new Main();
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int Q = scanner.nextInt();
+        main.leftChild = new int[N + 1];
+        main.rightChild = new int[N + 1];
+        main.data = new int[N + 1];
+        for(int i = 1; i <= N; i++) {
+            main.leftChild[i] = scanner.nextInt();
+            main.rightChild[i] = scanner.nextInt();
+        }
+        for(int i = 1; i <= Q; i++) {
+            int q = scanner.nextInt();
+            int u = scanner.nextInt();
+            //1 u x - add x to all nodes in subtree of node u
+            if(q == 1) {
+                int x = scanner.nextInt();
+                main.performQuery1(u, x);
+            }
+            //2 u - print the value of node u
+            else {
+                System.out.println(main.data[u]);
+            }
+        }
+    }
+}
 
 /*
 Query on Tree
