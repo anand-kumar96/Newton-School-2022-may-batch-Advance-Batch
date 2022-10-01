@@ -63,7 +63,30 @@ public static int sumOfLeaf(Node root){
     return sum;
  }
 
+// method 03
+/*
+ class Node {
+    int data;
+    Node left, right;
 
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
+public static int sumOfLeaf(Node root){
+int sum=0;
+if(root!=null){
+    if(root.left==null && root.right==null){
+        sum+=root.data;
+    }else{
+       return sumOfLeaf(root.left) + sumOfLeaf(root.right);
+    }
+   }
+    return sum;
+ }
 /*
 Sum of leaves
 easy
