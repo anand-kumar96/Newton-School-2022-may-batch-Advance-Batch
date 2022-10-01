@@ -1,4 +1,7 @@
 //https://my.newtonschool.co/playground/code/h6xwfitts6i0/
+
+// method 01
+
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
@@ -20,6 +23,74 @@ class Main {
     }
 }
 
+
+// method 02
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Node{
+    Node leftChild;
+    Node rightChild;
+    int data;
+    Node(int data){
+        this.data=data;
+        leftChild=rightChild=null;
+    }
+}
+class Main {
+ static int count=0;
+ public static void calculateleave(Node root){
+  if(root!=null){
+      if(root.leftChild==null && root.rightChild==null){
+          count++;
+      }
+      calculateleave(root.leftChild);
+      calculateleave(root.rightChild);
+  }
+ }
+    public static void main (String[] args) {
+     Scanner sc=new Scanner(System.in);
+     int n=sc.nextInt();
+     Node root=null;
+     Node left=null;
+     Node right=null;
+     HashMap<Integer,Node>hm=new HashMap<>();
+     for(int i=1;i<=n;i++){
+         if(hm.containsKey(i)){
+           root=hm.get(i);
+         }else{
+             root=new Node(i);
+             hm.put(i,root);
+         }
+        int l=sc.nextInt();
+        int r=sc.nextInt();
+        if(l!=-1){
+            if(hm.containsKey(l)){
+                left=hm.get(l);
+            }else{
+                left=new Node(l);
+                hm.put(l,left);
+            }
+            root.leftChild=left;
+        }
+        if(r!=-1){
+            if(hm.containsKey(r)){
+                left=hm.get(r);
+            }else{
+                right=new Node(r);
+                hm.put(r,right);
+            }
+            root.rightChild=right;
+        }
+     }
+     calculateleave(hm.get(1));
+      System.out.println(count);
+    }
+   
+}
 /*
 Count Leaves in Binary Tree
 easy
