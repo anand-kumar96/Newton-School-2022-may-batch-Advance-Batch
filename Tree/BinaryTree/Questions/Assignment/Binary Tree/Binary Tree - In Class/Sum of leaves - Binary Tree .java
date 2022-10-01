@@ -87,6 +87,39 @@ if(root!=null){
    }
     return sum;
  }
+
+
+//
+
+
+/*
+ class Node {
+    int data;
+    Node left, right;
+
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+*/
+static int sum;
+public static void helper(Node root){
+    if(root==null){
+        return;
+    }
+    if(root.left==null && root.right==null){
+        sum+=root.data;
+    }
+    helper(root.left);
+    helper(root.right);
+}
+public static int sumOfLeaf(Node root){
+      sum=0;
+      helper(root);
+      return sum;
+ }
 /*
 Sum of leaves
 easy
