@@ -1,3 +1,87 @@
+// method 01
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+
+class Node {
+        Node leftChild;
+        Node rightChild;
+        int data;
+
+        Node(int data) {
+            this.data = data;
+            leftChild = rightChild = null;
+        }
+    }
+
+
+class Main {
+    public static void Preorder(Node root){
+        if(root!=null){
+            System.out.print(root.data+" ");
+            Preorder(root.leftChild);
+            Preorder(root.rightChild);
+        }
+    }
+    public static  int searchIndex(int inorderStart,int inorderEnd,int inorder[],int key){
+        int position=-1;
+        for(int i=inorderStart;i<=inorderEnd;i++){
+            if(inorder[i]==key){
+                position=i;
+                break;
+            }
+        }
+        return position;
+}
+public static Node InorderPostOrder(int inorderStart, int inorderEnd,int postorderStart,
+                            int postorderEnd,int inorder[],int postorder[]){
+        if(inorderStart>inorderEnd){
+            return null;
+        }
+
+        int currentData=postorder[postorderEnd];
+        Node currentNode=new Node(currentData);
+        if(inorderStart==inorderEnd){
+            return currentNode;
+        }
+
+int inorderIndex=searchIndex(inorderStart,inorderEnd,inorder,currentData);
+
+currentNode.rightChild=InorderPostOrder(inorderIndex+1,inorderEnd,
+        postorderEnd-inorderEnd+inorderIndex,postorderEnd-1,inorder,postorder);
+    currentNode.leftChild=InorderPostOrder(inorderStart,inorderIndex-1,
+        postorderStart,postorderStart-inorderStart+inorderIndex-1,inorder,postorder);
+
+            return currentNode;
+        }
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int Inorder[]=new int[n];
+        int Postorder[]=new int[n];
+         for(int i=0;i<n;i++){
+            Inorder[i]=sc.nextInt();
+         }
+         for(int i=0;i<n;i++){
+            Postorder[i]=sc.nextInt();
+         }
+         int length=Inorder.length;
+        Node root= InorderPostOrder(0,length-1,0,length-1,Inorder,Postorder);
+          Preorder(root);           
+    }
+}
+
+
+
+
+
+
+
+
+
+// method 02
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
