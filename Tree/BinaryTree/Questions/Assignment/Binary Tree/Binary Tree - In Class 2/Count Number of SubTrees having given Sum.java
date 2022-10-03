@@ -1,4 +1,81 @@
 /*
+
+// method 01
+/*
+// Information about the class Node
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node(int data){
+        this.data = data;
+        left=null;
+        right=null;
+    }
+}
+*/
+static int count;
+static int findsum(Node root, int x){
+    if(root==null){
+        return 0;
+    }
+int leftsum=findsum(root.left,x);
+int rightsum=findsum(root.right,x);
+     if((leftsum+rightsum+root.data)==x){
+         count++;
+     }
+     return (leftsum+rightsum+root.data);
+}
+static int countSubtreesWithSumX(Node root, int x){
+    count=0;
+    findsum(root,x);
+     return count;
+}
+
+//method 02 
+/*
+// Information about the class Node
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node(int data){
+        this.data = data;
+        left=null;
+        right=null;
+    }
+}
+*/
+static int count;
+static int findsum(Node root, int x){
+    if(root==null){
+        return 0;
+    }
+int leftsum=findsum(root.left,x);
+int rightsum=findsum(root.right,x);
+if((leftsum+rightsum+root.data)==x){
+         count++;
+     }
+     //System.out.println(count);
+     return (leftsum+rightsum+root.data);
+}
+static int countSubtreesWithSumX(Node root, int x){
+    count=0;
+    if(root==null){
+        return 0;
+    }
+    int l= findsum(root.left,x);
+    int r= findsum(root.right,x);
+    if(l+r+root.data==x){
+        count++;
+    }
+     return count;
+}
+
+
+
+// method 03
+
 // Information about the class Node
 class Node{
     int data;
