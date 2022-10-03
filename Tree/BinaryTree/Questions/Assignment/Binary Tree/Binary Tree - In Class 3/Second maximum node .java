@@ -1,4 +1,49 @@
 // method 01
+//class TreeNode {
+//     int val;
+//     TreeNode left;
+//     TreeNode right;
+//     TreeNode() {}
+//     TreeNode(int val) { this.val = val; }
+//     TreeNode(int val, TreeNode left, TreeNode right) {
+//         this.val = val;
+//         this.left = left;
+//         this.right = right;
+//     }
+// }
+
+class Solution {
+   static long result1;
+   static long result2;
+   public static void findsecondmax(TreeNode root){
+    if(root==null){
+        return;
+    }
+   // System.out.println(root.val);
+    if(root.val>result1){
+        result2=result1;
+        result1=root.val;
+    }else if(root.val>result2){
+         result2=root.val;
+     }
+      findsecondmax(root.left);
+      findsecondmax(root.right);
+   }
+    public int SecondMaxNode(TreeNode root){
+         result1=-1;
+         result2=-1;
+        if(root==null){
+        return -1;
+    }
+     if(root.left==null && root.right==null){
+        return root.val;
+     }
+    findsecondmax(root);
+       return (int)result2;
+    }
+}
+
+// method 02 
 
 //class TreeNode {
 //     int val;
