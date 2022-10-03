@@ -75,7 +75,7 @@ static int countSubtreesWithSumX(Node root, int x){
 
 
 // method 03
-
+/*
 // Information about the class Node
 class Node{
     int data;
@@ -89,20 +89,21 @@ class Node{
 }
 */
 static class INT{
-    int v;
-    INT(int a)
-    {
-        v = a;
+    int value;
+    INT(int a){
+        value = a;
     }
 }
 static int countSubtreesWithSumXUtil(Node root,INT count, int x){
     if (root == null)
         return 0;
-    int ls = countSubtreesWithSumXUtil(root.left,count, x);
-    int rs = countSubtreesWithSumXUtil(root.right,count, x);
+    int ls = countSubtreesWithSumXUtil(root.left,
+                                   count, x);
+    int rs = countSubtreesWithSumXUtil(root.right,
+                                   count, x);
     int sum = ls + rs + root.data;
     if (sum == x)
-        count.v++;
+        count.value++;
     return sum;
 }
 static int countSubtreesWithSumX(Node root, int x){
@@ -112,8 +113,8 @@ static int countSubtreesWithSumX(Node root, int x){
     int ls = countSubtreesWithSumXUtil(root.left,count, x);
     int rs = countSubtreesWithSumXUtil(root.right,count, x);
     if ((ls + rs + root.data) == x)
-        count.v++;
-    return count.v;
+        count.value++;
+    return count.value;
 }
 
 /*
