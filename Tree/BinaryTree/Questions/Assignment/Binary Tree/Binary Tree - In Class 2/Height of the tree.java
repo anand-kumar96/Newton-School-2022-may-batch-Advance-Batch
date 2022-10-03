@@ -1,3 +1,70 @@
+//method 02
+
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static int findHeight(int startNode,boolean visited[],List<Integer>edgeList[]) {
+     int height=0;
+     List<Integer>childNodes=edgeList[startNode];
+     for(Integer eachChild:childNodes){
+     if(!visited[eachChild]){
+         visited[eachChild]=true;
+         height=Math.max(findHeight(eachChild,visited,edgeList)+1,height);
+     }
+     }
+ return height;
+     }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        List<Integer> edgeList[]=new ArrayList[n+1]; // to create list of array of size n+1 ignore 0 th
+        for(int i=1;i<=n;i++){
+            edgeList[i]=new ArrayList<>();
+        }
+        for(int i=1;i<n;i++){
+            int u=sc.nextInt();
+            int v=sc.nextInt();
+            edgeList[u].add(v);
+            edgeList[v].add(u);
+        }
+        int startNode=1;
+        boolean visited[]=new boolean[n+1];
+        visited[1]=true;
+        int maxheight=findHeight(startNode,visited,edgeList);
+        System.out.println(maxheight);
+
+    }
+}
+/*
+input:-
+10
+7 5
+5 10
+7 9
+7 4
+7 6
+5 2
+6 8
+9 1
+8 3
+ output:-
+[9]
+[5]
+[8]
+[7]
+[7, 10, 2]
+[7, 8]
+[5, 9, 4, 6]
+[6, 3]
+[7, 1]
+[5]
+
+ */
+// method 01
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
