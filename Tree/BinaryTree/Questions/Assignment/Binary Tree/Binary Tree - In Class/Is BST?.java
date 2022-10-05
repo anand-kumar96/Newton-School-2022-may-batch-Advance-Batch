@@ -6,52 +6,52 @@ import java.util.*; // contains Collections framework
 
 // don't change the name of this class
 // you can add inner classes if needed
-
 class Node{
+	Node leftchild;
+	Node rightchild;
 	int data;
-	Node left;
-	Node right;
 	Node(int data){
-		this.data = data;
-		left = null;
-		right = null;
+		this.data=data;
+		leftchild=rightchild=null;
 	}
 }
 class Main {
-	public static boolean isBST(Node tree, int min, int max){
-    	if(tree == null)
+	public static boolean isBst(Node tree,int min,int max){
+		if(tree==null){
 			return true;
-		if(tree.data <= min || tree.data > max)
+		}
+		if(min>=tree.data || tree.data>max){
 			return false;
-		return isBST(tree.left, min, tree.data) && isBST(tree.right, tree.data, max);
+		}
+		return isBst(tree.leftchild,min,tree.data) &&
+		        isBst(tree.rightchild,tree.data,max);
 	}
-	public static void main (String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		Node[] tree = new Node[n+1];
-		for(int i = 1; i <=n; i++){
-			int value = sc.nextInt();
-			tree[i] = new Node(value);
+    public static void main (String[] args) {
+	Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+	Node tree[]=new Node[n+1];
+	for(int i=1;i<=n;i++){
+		int value=sc.nextInt();
+		tree[i]=new Node(value);
+	}
+	int root=sc.nextInt();
+	for(int i=1;i<=n;i++){
+		int left=sc.nextInt();
+		int right=sc.nextInt();
+        if(left!=0){
+			tree[i].leftchild=tree[left];
 		}
-		int root = sc.nextInt();
-		 for(int i =1; i <=n; i++){
-			int left = sc.nextInt();
-			int right = sc.nextInt();
-			if(left != 0)
-				tree[i].left = tree[left];
-			if(right != 0)
-				tree[i].right = tree[right];
-		}
-		if(isBST(tree[root], Integer.MIN_VALUE, Integer.MAX_VALUE)){
-			System.out.println("YES");
-		}
-		else{
-			System.out.println("NO");
+		if(right!=0){
+			tree[i].rightchild=tree[right];
 		}
 	}
+     if(isBst(tree[root],Integer.MIN_VALUE,Integer.MAX_VALUE)){
+		 System.out.println("YES");
+	 }else{
+		  System.out.println("NO");
+	 }
+    }
 }
-
-
 
 // method 02
 
