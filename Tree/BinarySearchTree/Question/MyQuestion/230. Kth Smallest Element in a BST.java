@@ -84,3 +84,41 @@ class Solution {
         return result;
     }
 }
+// method 02
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+     int result;
+    int count;
+    private void kthSmallestHelper(TreeNode currentNode, int k) {
+        if(currentNode != null) {
+            kthSmallestHelper(currentNode.left, k);
+            count++;
+            if(count == k) {
+                result = currentNode.val;
+                return;
+            }
+            if(count < k) {
+                kthSmallestHelper(currentNode.right, k);
+            }
+        }
+    }
+    public int kthSmallest(TreeNode root, int k) {
+        count = 0;
+        kthSmallestHelper(root, k);
+        return result;
+    }
+}
