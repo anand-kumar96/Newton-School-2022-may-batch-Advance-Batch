@@ -64,6 +64,7 @@ class Solution {
 class Solution {
     static int result;
     static int count;
+    // inorderTraversal in bst give sorted data
     public void kthSmallestHelper(TreeNode root, int k){
          if(root!=null){
         kthSmallestHelper(root.left, k);
