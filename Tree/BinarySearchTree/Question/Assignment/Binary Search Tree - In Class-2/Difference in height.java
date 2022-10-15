@@ -1,3 +1,4 @@
+
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
@@ -7,9 +8,17 @@ class Main {
     public static void main (String[] args) {
     Scanner sc=new Scanner(System.in);
     int n=sc.nextInt();
+        /*
     int binaryTree=(int)(Math.pow(2,n))-1;
     int binarySearchTree=n;
     System.out.println(binaryTree-binarySearchTree);
+*/
+       /*
+   int answer=(int)(Math.pow(2,n))-1-n;
+   System.out.println(answer);
+   */
+   int answer=(1<<n)-1-n;
+   System.out.println(answer);
     }
 }
 
