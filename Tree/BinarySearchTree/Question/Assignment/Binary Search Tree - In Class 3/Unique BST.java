@@ -79,7 +79,35 @@ class Main {
     }
 }
 
-// method 04  BINOMIAL COEFFICIENT:-
+// method 04  using ncr
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+    Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	if(n<=1){
+		System.out.println("1");
+		return;
+	}
+
+	// best way to find ncr
+	int r=2*n;
+	long result=1;
+	for(int i=0;i<n;i++){
+     result=((result*(r-i))/(i+1));
+
+	}
+ System.out.println(result/(n+1));
+    }
+}
+
+
+// method 05 using binomial expression
+
 import java.io.*; // for handling input/output
 import java.util.*; // contains Collections framework
 
