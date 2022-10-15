@@ -1,3 +1,108 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+// class Node{
+//     int data;
+//     Node left;
+//     Node right;
+//     Node(int data){
+//         this.data=data;
+//         left=right=null;
+//     }
+// }
+class Main {
+//    static Node temp1,temp2,temproot=null;
+//     public static void AncestralPath(Node rootNode,int x){
+//         if(rootNode!=null){
+//             if(rootNode.data==x){
+//                 temproot=rootNode;
+//                 return;
+//             }
+//             AncestralPath(rootNode.left,x);
+//             AncestralPath(rootNode.right,x);
+//         }
+//     } 
+//     public static void AncestralPathHelper(Node currentNode,int u,int v){
+//      AncestralPath(currentNode,u);
+//      temp1=temproot;
+//      temproot=null;
+//       AncestralPath(currentNode,v);
+//       temp2=temproot;
+//        temproot=null;
+//       System.out.println(temp1.data);
+//        System.out.println(temp2.data);
+//     }
+    
+    public static void main (String[] args) {
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int q=sc.nextInt();
+    int arr[]=new int[n+1];
+    arr[1]=1;
+    for(int i=1;i<=n;i++){
+         int l=sc.nextInt();
+         int r=sc.nextInt();
+         if(l!=-1){
+             arr[l]=l+arr[i];
+         }
+         if(r!=-1){
+             arr[r]=r+arr[i];
+         }
+    }
+    for(int i=0;i<q;i++){
+        int u=sc.nextInt();
+       int v=sc.nextInt();
+       System.out.println(arr[u]-arr[v]+v);
+    }
+    }
+}
+
+//     Node leftchild=null,rightchild=null,root=null;
+//     HashMap<Integer,Node>hm=new HashMap<>();
+//     for(int i=1;i<=n;i++){
+//         if(hm.containsKey(i)){
+//             root=hm.get(i);
+//         }else{
+//             root=new Node(i);
+//             hm.put(i,root);
+//         }
+//         int l=sc.nextInt();
+//         int r=sc.nextInt();
+//         if(l!=-1){
+//             if(hm.containsKey(l)){
+//                 leftchild=hm.get(l);
+//             }else{
+//                 leftchild=new Node(l);
+//                 root.left=leftchild;
+//             }
+//             hm.put(l,leftchild);
+//         }
+//         if(r!=-1){
+//             if(hm.containsKey(r)){
+//                 rightchild=hm.get(r);
+//             }else{
+//                 rightchild=new Node(r);
+//                 root.right=rightchild;
+//             }
+//             hm.put(r,rightchild);
+//         }
+
+//     }
+//     for(int i=0;i<q;i++){
+//       int u=sc.nextInt();
+//       int v=sc.nextInt();
+//       sum=0;
+//       if(hm.containsKey(u)){
+//          temp1=hm.get(u);
+//       }
+//       AncestralPathHelper(hm.get(1),);
+//     }
+    
+//     }
+// }
+
 /*
 Ancestral Path Sum
 medium
