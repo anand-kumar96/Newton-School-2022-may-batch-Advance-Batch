@@ -23,6 +23,13 @@ class Solution {
         hs.add(root.val);
         // Recursively check in left and right subtrees.
         return checkDuplicate(root.left,hs) || checkDuplicate(root.right,hs);
+        
+        /*
+        checkDuplicate(root.left,hs);---> if return true
+        checkDuplicate(root.right,hs);---> return false
+        then we have to return true
+         so  return using or
+        */
     }
   
    public boolean duplicate(TreeNode root){
