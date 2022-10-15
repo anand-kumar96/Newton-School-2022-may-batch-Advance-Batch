@@ -55,63 +55,58 @@ import java.util.*; // contains Collections framework
 
 // don't change the name of this class
 // you can add inner classes if needed
-
-public class Main {
-    Node rootNode;
-    static class Node {
-        Node leftChild;
+class Main {
+   static Node root;
+   static class Node{
+        Node left;
+        Node right;
         int data;
-        Node rightChild;
-
-        Node(int data) {
-            this.data = data;
-            leftChild = rightChild = null;
+        Node(int data){
+            this.data=data;
+            left=right=null;
         }
     }
-
-    private Node insertNode(Node currentNode, int data) {
-        if(currentNode == null) {
-            Node newNode = new Node(data);
-            currentNode = newNode;
-        }
-        else {
-            if(data <= currentNode.data) {
-                currentNode.leftChild = insertNode(currentNode.leftChild, data);
-            }
-            else {
-                currentNode.rightChild = insertNode(currentNode.rightChild, data);
-            }
-        }
-        return currentNode;
-    }
-    private int Main(Node currentRootNode, int low, int high) {
-        if(currentRootNode == null) {
+    public static int countsNode(Node root,int low,int high){
+        if(root==null){
             return 0;
         }
-        if(currentRootNode.data < low) {
-            //go for right subtree only
-            return Main(currentRootNode.rightChild, low, high);
+        if(root.data<low){
+            // go right sub tree
+            return countsNode(root.right,low,high);
         }
-        if(currentRootNode.data > high) {
-            //go for left subtree only
-            return Main(currentRootNode.leftChild, low, high);
+        if(root.data>high){
+            // go left sub tree
+            return countsNode(root.left,low,high);
+    }
+       // go  left and right sub tree both
+            return (1+countsNode(root.right,low,high)+countsNode(root.left,low,high));
+    }
+    public static Node insert(Node root,int data){
+        if(root==null){
+            Node newNode=new Node(data);
+            root=newNode;
+            return root;
         }
-        //go for both the left subtree and the right subtree only
-        return (1 + Main(currentRootNode.rightChild, low, high)
-                + Main(currentRootNode.leftChild, low, high));
-    }    
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);        
-        int low = scanner.nextInt();
-        int high = scanner.nextInt();
-        int N = scanner.nextInt();
-        Main Main = new Main();
-        for(int i = 1; i <= N; i++) {
-            int data = scanner.nextInt();
-            Main.rootNode = Main.insertNode(Main.rootNode,data);
+        if(data<=root.data){
+            root.left= insert(root.left,data);
+        }else{
+          root.right= insert(root.right,data);
         }
-        int count = Main.Main(Main.rootNode, low, high);
-        System.out.println(count);
+        return root;
+    }
+    public static void main (String[] args) {
+    Scanner sc=new Scanner(System.in);
+    Main main=new Main();
+    int low=sc.nextInt();
+    int high=sc.nextInt();
+    int n=sc.nextInt();
+    for(int i=0;i<n;i++){
+        int data=sc.nextInt();
+        main.root=insert(main.root,data);
+    }
+    int count=main.countsNode(main.root,low,high);
+    System.out.println(count);
+
     }
 }
 
