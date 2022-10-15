@@ -1,3 +1,30 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static long nCr(int n, int r) {
+        if((n-r)<r) {
+            r = n - r;
+        }
+        long ncr = 1;
+        for(int i = 0; i < r; i++) {
+            ncr *= (n - i);
+            ncr /= (i + 1);
+        }
+        return ncr;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        long numerator =nCr(2*N, N);
+        long denominator = (N + 1);
+        long answer = numerator / denominator;
+        System.out.println(answer);
+    }
+}
+
 // method 01
 // using recursion-->give tle but lastly submit using catalan number
 
