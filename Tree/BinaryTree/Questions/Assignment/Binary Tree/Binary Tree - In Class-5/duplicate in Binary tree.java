@@ -121,3 +121,30 @@ class Solution {
    }
   
 }
+
+
+/*
+duplicate in Binary tree
+easy
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given the root of the binary tree and an integer val. Return true if there exists two nodes with same values.
+Input
+You don't have to input anything, just complete the given function.
+
+Constrains
+1 <= number of nodes <= 105
+1 <= value of nodes <= 10 5
+Output
+Return true or false.
+Example
+Input:
+2 null 2 5 7
+
+Output:
+true
+
+Explanation :
+There are two nodes with same values as 2.
+*/
