@@ -2,7 +2,7 @@ package com.company.Newton_School.AdvanceDataStructure.Graph;
 
 public class AdjacencyMatrixRepresentation {
     static int adjacencyMatrix[][];
-    AdjacencyMatrixRepresentation (int N){
+    AdjacencyMatrixRepresentation (int N){ // constructor of main class
       adjacencyMatrix=new int[N][N];
     }
     public static boolean checkIfEdgeExists(int u,int v){
