@@ -100,6 +100,186 @@ class Main {
         System.out.println(tree.maximumSum);
     }
 }
+// method 02
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static Node root;
+    static class Node{
+        int data;
+        Node left;
+        Node right;
+        Node(int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+
+    static class pair {
+        int min;
+        int max;
+        int val;
+         pair(int min, int max, int val) {
+            this.min = min;
+            this.max = max;
+            this.val = val;
+        }
+    }
+    public static int maxSumBST(Node root) {
+        int[] result = {0};
+        traverse(root, result);
+        return result[0];
+    }
+    
+    private static pair traverse(Node root, int[] result) {
+        if (root == null) {
+            return new pair(Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
+        }
+        pair left = traverse(root.left, result);
+        pair right = traverse(root.right, result);
+        if (root.data > left.max && root.data < right.min) {
+            int curSum = left.val + right.val + root.data;
+            result[0] = Math.max(curSum, result[0]);
+            return new pair(Math.min(root.data, left.min), Math.max(root.data, right.max), curSum);
+        }
+        return new pair(Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE);
+    }
+
+    public static void buildTree(int data){
+        Node newNode=new Node(data);
+          if(root==null){
+           root=newNode;
+           return;
+       } 
+       Queue<Node>q=new LinkedList<>();
+       q.add(root);
+       while(!q.isEmpty()){
+        Node temp=q.poll();
+        if(temp.left==null){
+            temp.left=newNode;
+            break;
+        }else{
+            q.add(temp.left);
+        }
+        if(temp.right==null){
+            temp.right=newNode;
+            break;
+        }else{
+            q.add(temp.right);
+        }
+       }
+    }
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++){
+            int data=sc.nextInt(); 
+           buildTree(data);
+        }
+        System.out.println(maxSumBST(root));
+    }
+}
+
+// method 03
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static Node root;
+    static class Node{
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+  
+    static class pair {
+        int min;
+        int max;
+        int val;
+        public pair(int min, int max, int val) {
+            this.min = min;
+            this.max = max;
+            this.val = val;
+        }
+    }
+    public static int maxSumBST(Node root) {
+        int[] result = {0};
+        traverse(root, result);
+        return result[0];
+    }
+    
+    private static pair traverse(Node root, int[] result) {
+        if (root == null) {
+            return new pair(Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
+        }
+        pair left = traverse(root.left, result);
+        pair right = traverse(root.right, result);
+        if (root.data > left.max && root.data < right.min) {
+            int curSum = left.val + right.val + root.data;
+            result[0] = Math.max(curSum, result[0]);
+            return new pair(Math.min(root.data, left.min), Math.max(root.data, right.max), curSum);
+        }
+        return new pair(Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE);
+    }
+    static int count;
+    public static void buildTree(int arr[]){
+        if(count == 0){
+            root = new Node(arr[count]);
+            count++;
+        }
+        int n = arr.length;
+
+        Queue<Node> qu = new LinkedList<>();
+        qu.add(root);
+
+        while(count < n-1){
+            Node curr = qu.poll();
+
+            if(count <= n-1){
+                if(arr[count] != -1){
+                    Node newNode = new Node(arr[count]);
+                    curr.left = newNode;
+                    qu.add(curr.left);
+                }
+                count++;
+            }
+
+            if(count <= n-1){
+                if(arr[count] != -1){
+                    Node newNode = new Node(arr[count]);
+                    curr.right = newNode;
+                    qu.add(curr.right);
+                }
+                count++;
+            }
+        }
+    }
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]= sc.nextInt();
+        }
+        count = 0;
+        buildTree(arr);
+        System.out.println(maxSumBST(root));
+    }
+}
+    
 
 /*
 Maximum Sum BST
