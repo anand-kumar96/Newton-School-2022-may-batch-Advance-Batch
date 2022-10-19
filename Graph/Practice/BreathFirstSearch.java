@@ -63,3 +63,10 @@ public class BreathFirstSearch {
         breathFirstSearch.bfsTraversal(CityMap.get(3));
     }
 }
+
+/*
+output
+{Ahmedabad=[Gurgaon, Noida], Gurgaon=[Ahmedabad, Noida, Bangalore], Pune=[Hyderabad, Bangalore], Noida=[Ahmedabad, Gurgaon, Hyderabad, Bangalore], Hyderabad=[Pune, Noida], Bangalore=[Gurgaon, Pune, Noida]}
+Hyderabad Pune Noida Bangalore Ahmedabad Gurgaon 
+
+*/
