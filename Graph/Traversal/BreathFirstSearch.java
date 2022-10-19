@@ -59,6 +59,12 @@ public class BreathFirstSearch {
         breathFirstSearch.bfsTraversal(5);
     }
 }
+/*
+output:-
+{1=[2, 3], 2=[1, 4, 5], 3=[1, 5], 4=[2, 5, 6], 5=[2, 3, 4, 6], 6=[4, 5]}
+5 2 3 4 6 1 
+
+*/
 
 // tc=N(n-1)
 //ts= O(N^2)
