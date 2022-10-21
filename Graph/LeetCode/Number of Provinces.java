@@ -35,3 +35,27 @@ class Solution {
         return count;
        }
 }
+// method 02
+class Solution {
+    public void dfs(int start,int[][] isConnected){
+        for(int j=0;j<isConnected.length;j++){
+            if(isConnected[start][j]==1){
+                isConnected[start][j]=isConnected[j][start]= 2; // mark it visited
+                dfs(j,isConnected);
+            }
+        }
+    }
+    public int findCircleNum(int[][] isConnected) {
+        int count=0;
+        for(int i=0;i<isConnected.length;i++){
+            if(isConnected[i][i]==1){
+                dfs(i,isConnected);
+                count++;
+            }
+        }
+    return count;
+    }
+}
+// 0--> not connected
+//1--> connected
+//2--> visited
