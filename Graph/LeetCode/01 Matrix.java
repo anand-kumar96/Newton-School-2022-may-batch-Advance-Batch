@@ -35,6 +35,24 @@ class Solution {
                   {-1,0},//up
                   {1,0} //down
               };
+            /*
+            // or we can write this way
+              for(int i=0;i<dirn.length;i++){
+                int row1=row+dirn[i][0];// row
+                int col1=col+dirn[i][1];; // col
+                if(row1<n &&
+                  row1>=0 &&
+                  col1<m  &&
+                  col1>=0 &&
+                   Visited[row1][col1]==false
+                  ){
+                     Visited[row1][col1]=true;
+                    mat[row1][col1]=mat[row][col]+1;
+                    q.add(new Pair(row1,col1));
+                }
+                    
+            }
+            /*
             for(int i=0;i<dirn.length;i++){
                 int row1=row+dirn[i][0];// row
                 int col1=col+dirn[i][1];; // col
