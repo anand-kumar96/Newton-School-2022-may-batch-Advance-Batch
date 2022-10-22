@@ -1,4 +1,61 @@
 //https://leetcode.com/problems/01-matrix/
+//method 0
+class Solution {
+    public int[][] updateMatrix(int[][] mat) {
+        // we are going to traverse 0 and try to find where is 1
+        class Pair{
+            int row;
+            int col;
+            Pair(int row,int col){
+                this.row=row;
+                this.col=col;
+            }
+        }
+        
+        Queue<Pair>q=new LinkedList<>();
+        int n=mat.length;
+        int m=mat[0].length;
+        boolean Visited[][]=new boolean[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(mat[i][j]==0){
+                    q.add(new Pair(i,j));
+                    Visited[i][j]=true;
+            }
+        }
+    }
+      
+        while(!q.isEmpty()){
+            Pair temp=q.poll();
+            int row=temp.row;
+            int col=temp.col;
+              int dirn[][]={
+                  {0,-1}, // left
+                  {0,+1},// right
+                  {-1,0},//up
+                  {1,0} //down
+              };
+            for(int i=0;i<dirn.length;i++){
+                int row1=row+dirn[i][0];// row
+                int col1=col+dirn[i][1];; // col
+                if(row1>=n ||
+                  row1<0 ||
+                  col1>=m ||
+                  col1<0 ||
+                   Visited[row1][col1]==true
+                  ){
+                   continue; 
+                }else{
+                     Visited[row1][col1]=true;
+                    mat[row1][col1]=mat[row][col]+1;
+                    q.add(new Pair(row1,col1));
+                }
+                    
+            }
+    }
+        return mat;
+}
+}
 // method 01
 /*
 // we think opposite i.e. we find nearest 1 from 0;
