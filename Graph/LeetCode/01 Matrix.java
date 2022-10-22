@@ -52,7 +52,7 @@ class Solution {
                 }
                     
             }
-            /*
+            */
             for(int i=0;i<dirn.length;i++){
                 int row1=row+dirn[i][0];// row
                 int col1=col+dirn[i][1];; // col
