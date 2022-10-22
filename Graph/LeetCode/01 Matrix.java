@@ -1,6 +1,7 @@
 //https://leetcode.com/problems/01-matrix/
 // method 01
 /*
+// we think opposite i.e. we find nearest 1 from 0;
 expalnation add all cordinate of 0 in queue and update ans=0; if matrix is not 0 update with -1
 thn keep on searching by polling queue in all 4 dirn if -1 got thn update ans[in that dirn]=ans+1 and add that cordinate in queue
 thn return 
