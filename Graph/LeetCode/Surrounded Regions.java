@@ -2,6 +2,75 @@
 // method 01
 class Solution {
     private void solveHelper(char board[][], int x, int y,boolean Visited[][]) {
+     int dirn[][]={
+             {0,-1},
+             {-1,0},
+             {0,+1},
+             {+1,0}
+        };
+        
+        for(int i=0;i<dirn.length;i++){
+                int row1=x+dirn[i][0];
+                int col1=y+dirn[i][1];
+          if(row1 >= 0
+         && row1 < board.length
+        && col1 >= 0
+        &&  col1 < board[0].length
+        &&  board[row1][col1] == 'O'
+        && Visited[row1][col1]==false
+        ){
+            Visited[row1][col1]=true;
+              solveHelper(board, row1, col1,Visited); 
+        }
+         
+    }    
+   }
+    public void solve(char[][] board) {
+        int n=board.length;
+        int m=board[0].length;
+        if (n <= 2 || m <= 2) {
+            return;
+        }
+        boolean Visited[][]=new boolean[n][m];
+        for(int i=0;i<m;i++){
+            // up 
+            if(board[0][i]=='O'){
+                Visited[0][i]=true;
+                 solveHelper(board, 0,i,Visited);
+            }
+            // down
+            if(board[n-1][i]=='O'){
+                  Visited[n-1][i]=true;
+                 solveHelper(board, n-1,i,Visited);
+            }
+            }
+           for(int i=0;i<n;i++){
+                //left
+            if(board[i][0]=='O'){
+                 Visited[i][0]=true;
+                 solveHelper(board, i,0,Visited);
+            }
+                    //right
+            if(board[i][m-1]=='O'){
+                Visited[i][m-1]=true;
+        solveHelper(board, i,m-1,Visited);
+            }
+        }
+
+         for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(Visited[i][j]==false && board[i][j]=='O' ){
+                    board[i][j]='X';
+                }
+                 
+         }
+         }     
+    }
+}
+
+// method 02
+class Solution {
+    private void solveHelper(char board[][], int x, int y,boolean Visited[][]) {
           if(x < 0
         || x >= board.length
         || y < 0
@@ -59,7 +128,7 @@ class Solution {
     }
 }
 
-// method 02
+// method 03
 class Solution {private void solveHelper(char board[][], int x, int y) {
         if(x < 0
         || x >= board.length
