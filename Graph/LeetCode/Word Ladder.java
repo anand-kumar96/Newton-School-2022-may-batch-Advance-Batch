@@ -44,3 +44,17 @@ class Solution {
         return 0;
     }
 }
+
+
+/*
+    Time Complexity: N is size of dictionary, M is say length of each word
+    O(N) - to iterate over each word of dictionary
+    O(M) - to convert word to char array
+    O(M) - looping for each char
+    26 - to reach each possible word from a word
+    O(M) - to convert charArray to String
+    O(M) - to compare two words
+    Inner for loop --> O(M)*26* (O(M) + O(M)) --> O(M^2)
+    Time Complexity including outer-inner for loop --> O(N) * ( O(M)+O(M^2) )
+    Final Time Complexity - O(N*M^2)
+    */
