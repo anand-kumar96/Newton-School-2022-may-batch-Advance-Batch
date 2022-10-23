@@ -1,7 +1,7 @@
 //https://leetcode.com/problems/surrounded-regions/
 // method 01
 class Solution {
-    private void solveHelper(char board[][], int x, int y,boolean Visited[][]) {
+    private void dfs(char board[][], int x, int y,boolean Visited[][]) {
      int dirn[][]={
              {0,-1},
              {-1,0},
@@ -20,7 +20,7 @@ class Solution {
         && Visited[row1][col1]==false
         ){
             Visited[row1][col1]=true;
-              solveHelper(board, row1, col1,Visited); 
+              dfs(board, row1, col1,Visited); 
         }
          
     }    
@@ -36,24 +36,24 @@ class Solution {
             // up 
             if(board[0][i]=='O'){
                 Visited[0][i]=true;
-                 solveHelper(board, 0,i,Visited);
+                 dfs(board, 0,i,Visited);
             }
             // down
             if(board[n-1][i]=='O'){
                   Visited[n-1][i]=true;
-                 solveHelper(board, n-1,i,Visited);
+                 dfs(board, n-1,i,Visited);
             }
             }
            for(int i=0;i<n;i++){
                 //left
             if(board[i][0]=='O'){
                  Visited[i][0]=true;
-                 solveHelper(board, i,0,Visited);
+                 dfs(board, i,0,Visited);
             }
                     //right
             if(board[i][m-1]=='O'){
                 Visited[i][m-1]=true;
-        solveHelper(board, i,m-1,Visited);
+        dfs(board, i,m-1,Visited);
             }
         }
 
