@@ -36,7 +36,7 @@ class Solution {
          // now check
             if(hs.contains(newWordString)){
                 q.add(new Pair(newWordString,wordcount+1));
-                hs.remove(newWordString);
+                hs.remove(newWordString); // in place of visited we removing
             }
           }
        }
