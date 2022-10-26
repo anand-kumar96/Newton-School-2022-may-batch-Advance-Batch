@@ -1,3 +1,68 @@
+// method 03
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static List<List<Integer>>adj;
+    Main(int V){
+        adj=new ArrayList<>();
+        for(int i=0;i<V;i++){
+            adj.add(new ArrayList<>());
+        }
+    }
+    public static boolean dfs(int a,int b,int visited[]){
+        visited[a]=1;
+        for(Integer it:adj.get(a)){
+            if(visited[it]==0){
+            if(it==b){
+                return true;
+            }else{
+                if(dfs(it,b,visited)){
+                    return true;
+                }
+            }
+          }
+        }
+        return false;
+    }
+    public static boolean checkpath(int a, int b,int V){
+     int visited[]=new int[V];
+     int x=a;
+     int y=b;
+     if(a>b){
+         x=b;
+         y=a;
+     }
+     for(int i=x;i<V;i++){
+         if(visited[i]==0){
+             if(dfs(i,b,visited)){
+                 return true;
+             }
+         }
+     }
+     return false;
+    }
+    public static void addEdge(int u,int v){
+        adj.get(u).add(v);
+        adj.get(v).add(u);
+    }
+    public static void main (String[] args) {
+    Scanner sc=new Scanner(System.in);
+    int V=sc.nextInt();
+    int E=sc.nextInt();
+    Main main=new Main(V);
+    for(int i=0;i<E;i++){
+        int u=sc.nextInt();
+        int v=sc.nextInt();
+        main.addEdge(u,v);
+    }
+    int a=sc.nextInt();
+    int b=sc.nextInt();
+    System.out.println(main.checkpath(a,b,V));
+    }
+}
 // method 01
 // using adjlist
 import java.io.*; // for handling input/output
