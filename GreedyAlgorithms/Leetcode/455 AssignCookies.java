@@ -1,4 +1,27 @@
 //https://leetcode.com/problems/assign-cookies/
+// method 03
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int a=g.length;
+        int b=s.length;
+        int i=0,j=0;
+        int count=0;
+        while(i<a && j<b){
+            if(s[j]>=g[i]){
+                count++;
+                i++;
+                j++;
+            }else{
+              j++;  
+            }
+            
+        }
+        return count;
+    }
+}
+// method 02
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);
