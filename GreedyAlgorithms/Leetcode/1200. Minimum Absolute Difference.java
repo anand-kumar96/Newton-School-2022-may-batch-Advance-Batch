@@ -22,7 +22,7 @@ class Solution {
     }
 }
 /*
-to convert two number in array then list
+to convert given data to list:   Arrays.asList( , , , , ----data);
 */
 
 
