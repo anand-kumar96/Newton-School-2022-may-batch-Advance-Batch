@@ -66,7 +66,7 @@ since letmin=0 return true;
 ex:2-->       (        )          )      (       (     )
 leftmax--> 0->1->(1-1)=0->(0-1)=-1    since leftmax<0 return false  
 leftmin--> 0->1->(1-1)=0->(0-1)=-1-->0 reset
-/*
+*/
 class Solution {
     public boolean checkValidString(String s) {
     int length=s.length();
