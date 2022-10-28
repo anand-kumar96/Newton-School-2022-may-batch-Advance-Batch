@@ -43,6 +43,30 @@ class Solution {
     }
 }
 // method 02
+/*
+greedy solution 
+we take two variable leftmin=0  and leftmax=0   and considering *=( for leftmax and *=) for leftmin
+leftmin-->min ( bracket  possible
+leftmax-->max ( bracket  possible
+means this is range of open bracket
+if leftmin<0 thn reset back to 0
+and if leftmax<0 return false;
+
+condition: if in loop leftmin<0 reset back to 0 
+but if leftmax<0 return false;
+
+at last if leftmin==0 return true else false
+
+ex:1-->       (         *          )               *      (           )
+leftmax--> 0->1-> (1+1)=2->(2-1)=1       ->(1+1)=2  ->(2+1)=3->(3-1)=2
+leftmin--> 0->1-> (1-1)=0->(0-1)=-1:re->0->(0-1)=-1:0->(0+1)=1->(1-1)=0
+
+since letmin=0 return true;
+
+ex:2-->       (        )          )      (       (     )
+leftmax--> 0->1->(1-1)=0->(0-1)=-1    since leftmax<0 return false  
+leftmin--> 0->1->(1-1)=0->(0-1)=-1-->0 reset
+/*
 class Solution {
     public boolean checkValidString(String s) {
     int length=s.length();
