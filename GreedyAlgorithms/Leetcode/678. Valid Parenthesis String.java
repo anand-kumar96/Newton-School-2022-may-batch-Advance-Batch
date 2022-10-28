@@ -69,27 +69,28 @@ leftmin--> 0->1->(1-1)=0->(0-1)=-1-->0 reset
 */
 class Solution {
     public boolean checkValidString(String s) {
-    int length=s.length();
-        int count1=0;
-        int count2=0;
-        for(int i=0;i<length;i++){
+        int n=s.length();
+        int leftmin=0;
+        int leftmax=0;
+        for(int i=0;i<n;i++){
             char ch=s.charAt(i);
             if(ch=='('){
-                count1++;
-                 count2++;
-            }else if(ch==')'){
-                count1--;
-                count2--;
+                leftmax++;
+                leftmin++;
             }else if(ch=='*'){
-                count1++;
-                count2--;
+                leftmax++;
+                leftmin--;
+            }else{
+                leftmax--;
+                leftmin--;
             }
-      if(count1<0){
-          return false;
-          }
-        count2 = Math.max(count2, 0);
+            if(leftmin<0){
+                leftmin=0;
+            }
+            if(leftmax<0){
+                return false;
+            }
         }
-     
-        return count2==0;
+        return leftmin==0;
     }
 }
