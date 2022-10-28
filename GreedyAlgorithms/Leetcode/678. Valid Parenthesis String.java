@@ -1,4 +1,5 @@
 // method 01
+//https://leetcode.com/problems/valid-parenthesis-string/
 class Solution {
     public boolean checkValidString(String s) {
       Stack<Integer>bracket=new Stack<>();
