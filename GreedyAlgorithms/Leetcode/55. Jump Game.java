@@ -1,4 +1,23 @@
-//method 01
+// https://leetcode.com/problems/jump-game/
+// method 01
+class Solution {
+    /*
+    start from last index if  you reach thn makke your destination to lastindex -1 as destination and at last if lastindex==0 return true
+    */
+    public boolean canJump(int[] nums) {
+        int n=nums.length;
+        int destinationIndex=n-1;
+        for(int i=n-1;i>=0;i--){
+            if(i+nums[i]>=destinationIndex){
+                destinationIndex=i;
+            }
+        }
+        return destinationIndex==0;
+    }
+}
+
+
+//method 02
 class Solution {
     public boolean canJump(int[] nums) {
         int n=nums.length;
@@ -20,19 +39,3 @@ class Solution {
     }
 }
 
-// method 02
-class Solution {
-    /*
-    start from last index if  you reach thn makke your destination to lastindex -1 as destination and at last if lastindex==0 return true
-    */
-    public boolean canJump(int[] nums) {
-        int n=nums.length;
-        int destinationIndex=n-1;
-        for(int i=n-1;i>=0;i--){
-            if(i+nums[i]>=destinationIndex){
-                destinationIndex=i;
-            }
-        }
-        return destinationIndex==0;
-    }
-}
