@@ -20,6 +20,8 @@ class Solution {
           }
       }
         int totalCandy=0;
+        // taking max between both
+        
         for(int i=0;i<n;i++){
             totalCandy+=Math.max(arrLR[i],arrRL[i]);
         }
