@@ -10,7 +10,7 @@ class Solution {
             if(i==reachingPosition){
                 count++;
                 reachingPosition=max;
-                max=0;
+              //  max=0; // or not write no issue
             }
         }
         return count;
