@@ -16,6 +16,6 @@
                 }
             }
         }
-        return list.toArray(new int[list.size()][0]);// or return list.toArray(new int[list.size()][]);
+        return list.toArray(new int[list.size()][0]);// or return list.toArray(new int[list.size()][]) --> autohandle colomn or--> give colmn size 2-->return list.toArray(new int[list.size()][2])
     }
 }
