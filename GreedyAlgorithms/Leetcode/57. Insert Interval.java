@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/insert-interval/
 // method 01-->using merge interval concept
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
@@ -158,3 +159,4 @@ public class InsertIntervals {
 6 9
 2 5
  */
+//https://www.youtube.com/watch?v=dxbRB6gWCqg
