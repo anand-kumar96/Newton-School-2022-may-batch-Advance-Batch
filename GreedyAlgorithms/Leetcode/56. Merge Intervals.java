@@ -63,3 +63,4 @@ public class MergeInterval {
         System.out.println("]");
     }
 }
+//https://www.youtube.com/watch?v=_FkR5zMwHQ0&t=335s
