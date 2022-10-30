@@ -12,6 +12,20 @@ static int minimumCoins(int Target){
     }
 
 // method 02
+static int minimumCoins(int Target){
+int coin[]={1,2,5,10,20,50,100,200,500,2000};
+int coinsNumber=0;
+int i=coin.length-1;
+while(Target>0 && i>=0){
+ int eachCoin=Target/coin[i];
+ coinsNumber+=eachCoin;
+ Target=Target-eachCoin*coin[i];
+ i--;
+}
+return coinsNumber;
+
+}
+// method 03
 static int minimumCoins(int target){
     int count=0;
     int val=0;
