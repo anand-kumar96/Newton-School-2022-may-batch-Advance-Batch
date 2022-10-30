@@ -1,4 +1,29 @@
 //https://leetcode.com/problems/non-overlapping-intervals/
+// method 0
+class Solution {
+    public int eraseOverlapIntervals(int[][] intervals) {
+       Arrays.sort(intervals,(a,b)->Integer.compare(a[0],b[0])); 
+        int count=0;
+        int r=1,l=0;
+        while(r<intervals.length){
+            // no overLapping case-->move both one step
+            if(intervals[l][1]<=intervals[r][0]){
+            l=r;
+            r++;
+                // Partially Overlapping---> condition 2-->remove  right one
+            }else if(intervals[l][1]<intervals[r][1]){
+            count++;
+             r++;
+                // complete overlapping---> condition 1-->remove left  one
+            }else if(intervals[l][1]>=intervals[r][1]){
+            l=r;
+            count++;
+            r++;
+        }
+    }
+        return count;
+}
+}
 // method 01
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
