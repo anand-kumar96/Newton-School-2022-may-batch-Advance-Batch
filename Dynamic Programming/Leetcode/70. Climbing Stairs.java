@@ -8,6 +8,7 @@ n=4--->5
 n=5--->8
 so a Sequenece is forming i.e. add of previous two number
 */
+// Using array
 class Solution {
     public int climbStairs(int n) {
         if(n==1 || n==2) return n;
