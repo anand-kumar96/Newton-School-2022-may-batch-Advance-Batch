@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/frog-jump/
-// method 01--> using array dp
+// method 01--> using array dp--. best explanation in notes
 class Solution {
     public boolean canCross(int[] stones) {
         int n=stones.length;
