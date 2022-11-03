@@ -34,8 +34,7 @@ class Solution {
 Use map to represent a mapping from the stone (not index) to the steps that can be taken from this stone.
 so this will be
 [0,1,3,5,6,8,12,17]
-
-{17=[], 0=[1], 1=[1, 2], 3=[1, 2, 3], 5=[1, 2, 3], 6=[1, 2, 3, 4], 8=[1, 2, 3, 4], 12=[3, 4, 5]}
+{0=[1], 1=[1, 2], 3=[1, 2, 3], 5=[1, 2, 3], 6=[1, 2, 3, 4], 8=[1, 2, 3, 4], 12=[3, 4, 5],17=[4,5,6]}
 Notice that no need to calculate the last stone.
 On each step, we look if any other stone can be reached from it, if so, we update that stone's steps by adding step, step + 1, step - 1.
 If we can reach the final stone, we return true. No need to calculate to the last stone.
