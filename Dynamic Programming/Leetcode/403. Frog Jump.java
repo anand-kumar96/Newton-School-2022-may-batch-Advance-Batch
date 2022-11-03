@@ -1,5 +1,27 @@
 // https://leetcode.com/problems/frog-jump/
-// method 01--> using HashMap
+// method 01--> using array dp
+class Solution {
+    public boolean canCross(int[] stones) {
+        int n=stones.length;
+        boolean dp[][]=new boolean[n][n];
+        dp[0][1]=true;
+        for(int i=1;i<n;i++){
+            for(int j=0;j<i;j++){
+                int step=stones[i]-stones[j];
+                if(step<n && dp[j][step]==true){
+                    if(step+1<n)  dp[i][step+1]=true; // k+1
+                     if(step-1>=0)  dp[i][step-1]=true; //k-1
+                      dp[i][step]=true; //k
+                    
+                      if(i==n-1) return true; // means frog reach at last stone
+                }
+            }
+        }
+        return false;
+    }
+}
+
+// method 02--> using HashMap
 class Solution {
     public boolean canCross(int[] stones) {
         if(stones.length==0) return true;
